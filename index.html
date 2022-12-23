@@ -8,10 +8,17 @@
     <title>Document</title>
 </head>
 <body>
+<div class="container-wrapper">
 <div class="form-conatiner">
-<h1 class="lh1">PasswordStrength Evaluator</h1>
-<input type="text" placeholder="enter password" id="password">
-<button class="lbtn" onclick="SendPassword()">check password</button>
+    <h1 class="lh1">PasswordStrength Evaluator</h1>
+    <input type="text" placeholder="enter password" id="password">
+    <button class="lbtn" onclick="SendPassword()">check password</button>
+</div>
+<div class="result">
+    jsk
+
+
+</div>
 
 </div>
 
@@ -35,6 +42,12 @@
     .lbtn:active
     {
         transform: scale(.9);
+    }
+    .container-wrapper
+    {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: .5rem;
     }
     .form-conatiner
     {
@@ -80,13 +93,40 @@
         text-transform: uppercase;
         font-weight: bold;
     }
+    .error li
+    {
+        color: red;
+        list-style: none;
+        font-weight: bold;
+    }
+    .result
+    {
+        background-color: aqua;
+        width: 90%;
+        height: 100%;
+        padding: 10px;
+        /* margin: auto; */
+    }
+    .result ul
+    {
+        list-style: none;
+    }
     @media (min-width:500px)
     {
-        .form-conatiner
+        .form-conatiner,.result
         {
             width: 300px;
         }
+    
 
+    }
+    @media (max-width:750px)
+    {
+    .container-wrapper
+    {
+        grid-template-columns: repeat(1,1fr);
+      
+    }
     }
 </style>
 

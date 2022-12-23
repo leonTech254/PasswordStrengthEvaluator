@@ -18,9 +18,10 @@ def password_checker():
     if request.method=="POST":
         contents=request.get_json()
         user_password=contents["password"]
-        data = PasswordChecker.input_passwod(user_password)
+        data = PasswordChecker().input_passwod(user_password)
+        print(data)
         return jsonify({"response":data})
     return "check password strength"
 
 
-app.run(debug=True)
+app.run(debug=True, port=5002)

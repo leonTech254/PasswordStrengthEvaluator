@@ -1,45 +1,49 @@
 import re
-password = "Martin123678MJKIBVRWYmdieh*&"
+def Store():
+    password = "Martin123678MJKIBVRWYmdieh*&"
 score = {"strong": 10, "medium": 5, "weak": 5}
-score_list = []
-weakness_list = []
+# score_list = []
+# weakness_list = []
 
 # check the length
 
 
 class PasswordChecker:
-    def check_length(password):
+    def __init__(self):
+        self.score_list = []
+        self.weakness_list = []
+    def check_length(self,password):
         passwordLen = len(password)
         if passwordLen <= 4:
-            score_list.append(score["weak"])
-            weakness_list.append(f"password len is {passwordLen}")
-            PasswordChecker.checkSpecial(password)
+            self.score_list.append(score["weak"])
+            self.weakness_list.append(f"password len is {passwordLen}")
+            # self.checkSpecial(password)
         if passwordLen > 4 and passwordLen <= 7:
-            score_list.append(score["medium"])
-            weakness_list.append(f"password len is {passwordLen}")
-            PasswordChecker.checkSpecial(password)
+            self.score_list.append(score["medium"])
+            self.weakness_list.append(f"password len is {passwordLen}")
+            self.checkSpecial(password)
         if passwordLen > 8:
-            score_list.append(score["strong"])
-            PasswordChecker.checkSpecial(password)
+            self.score_list.append(score["strong"])
+            self.checkSpecial(password)
 
     # check for special character
-    def checkSpecial(password):
+    def checkSpecial(self,password):
         special_char = re.compile("[@_!#$%^&*()<>?/\|}{~:]")
         parser = special_char.findall(password)
         if bool(parser) == True:
             if len(parser) < 2:
-                score_list.append(score["medium"])
-                weakness_list.append(f"number of special character {parser}")
-                PasswordChecker.checkCase(password)
+                self.score_list.append(score["medium"])
+                self.weakness_list.append(f"number of special character {parser}")
+                self.checkCase(password)
             else:
-                score_list.append(score["strong"])
-                PasswordChecker.checkCase(password)
+                self.score_list.append(score["strong"])
+                self.checkCase(password)
         else:
-            score_list.append(score["weak"])
-            weakness_list.append(f"password lacks special character")
-            PasswordChecker.checkCase(password)
+            self.score_list.append(score["weak"])
+            self.weakness_list.append(f"password lacks special character")
+            self.checkCase(password)
 
-    def checknumbers(password):
+    def checknumbers(self,password):
         number_count = 0
         isNumber = False
         for num in password:
@@ -48,19 +52,20 @@ class PasswordChecker:
                 isNumber = True
         if isNumber:
             if number_count < 3:
-                score_list.append(score["weak"])
+                self.score_list.append(score["weak"])
             elif number_count > 3 and number_count < 5:
-                score_list.append(score["medium"])
+                self.score_list.append(score["medium"])
             elif number_count > 5:
-                score_list.append(score["strong"])
+                self.score_list.append(score["strong"])
 
         else:
-            weakness_list.append(f"password lacks numbers/digits character")
-            score_list.append(score["weak"])
+            self.weakness_list.append(f"password lacks numbers/digits character")
+            self.score_list.append(score["weak"])
 
     # check case
 
-    def checkCase(password):
+    def checkCase(self,password):
+        
         uppercase = False
         lowercase = False
         upper_count = 0
@@ -81,34 +86,36 @@ class PasswordChecker:
         case_value = abs(upper_count-lower_count)
         if uppercase and lowercase:
             if case_value > 4:
-                weakness_list.append(
+                self.weakness_list.append(
                     f"mixture of uppecase and lowercase letter is not enough")
 
-                score_list.append(score["weak"])
-                PasswordChecker.checknumbers(password)
+                self.score_list.append(score["weak"])
+                self.checknumbers(password)
             elif case_value < 4 and upper_count < 2:
-                weakness_list.append(
+                self.weakness_list.append(
                     f"mixture of uppecase and lowercase letters is not enough")
-                score_list.append(score["mediam"])
-                PasswordChecker.checknumbers(password)
+                self.score_list.append(score["mediam"])
+                self.checknumbers(password)
             elif case_value < 4 and upper_count > 2:
-                score_list.append(score["strong"])
-                PasswordChecker.checknumbers(password)
+                self.score_list.append(score["strong"])
+                self.checknumbers(password)
 
         else:
-            score_list.append(score["weak"])
-            weakness_list.append(
+            self.score_list.append(score["weak"])
+            self.weakness_list.append(
                 f"the password does not contain mixture of uppercase and lowercase letters")
 
-    def input_passwod(password):
-        PasswordChecker.check_length(password)
+    def input_passwod(self,password):
+        self.check_length(password)
         Total_score = 0
-        for num in score_list:
+        for num in self.score_list:
             Total_score += num
         reports = {}
         percentage = (Total_score/40)*100
         reports['total_score'] = 40
         reports["points_earned"] = Total_score
-        reports["weaknesses"] = weakness_list
+        reports["weaknesses"] = self.weakness_list
         reports["percentage"] = "{:.2f}%".format(percentage)
         return reports
+
+    
