@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>Document</title>
 </head>
 <body>
 <div class="form-conatiner">
 <h1 class="lh1">PasswordStrength Evaluator</h1>
-<input type="text" placeholder="enter password">
-<button class="lbtn">check password</button>
+<input type="text" placeholder="enter password" id="password">
+<button class="lbtn" onclick="SendPassword()">check password</button>
 
 </div>
 
@@ -89,6 +90,6 @@
     }
 </style>
 
-    
+<script src="./scripts/main.js"></script>
 </body>
 </html>
