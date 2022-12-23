@@ -10,16 +10,17 @@
 <body>
 <div class="container-wrapper">
 <div class="form-conatiner">
+   <div class="form-content">
     <h1 class="lh1">PasswordStrength Evaluator</h1>
     <input type="text" placeholder="enter password" id="password">
+    
     <button class="lbtn" onclick="SendPassword()">check password</button>
+   </div>
 </div>
 <div class="result">
-    jsk
-
+    <div class="response">PASSWORD REPORT</div>
 
 </div>
-
 </div>
 
     
@@ -35,9 +36,23 @@
     {
         margin-bottom: .5rem;
     }
+    ul li
+    {
+        list-style: none;
+        
+    }
+    .response
+    {
+        text-align: center;
+        font-size: large;
+        font-weight: bold;
+
+    }
     body
     {
         transition: 2s;
+        background-color: black;
+        color: green;
     }
     .lbtn:active
     {
@@ -48,19 +63,26 @@
         display: grid;
         grid-template-columns: repeat(2,1fr);
         gap: .5rem;
+        margin-top:100px;
+        padding: 0;
     }
     .form-conatiner
     {
-        width: 90%;
-        background-color: rgba(128, 128, 128, 0.603);
-        padding: 10px;
+        width: 80%;
+        height: 20rem;
+        margin: auto;
+        margin-top: 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 1.5rem;
-        margin: auto;
-        margin-top: 1.5rem;
+        padding: 2rem;
+
+        border: 1px solid green;
+
+      
+
+        
 
     }
     .lh1
@@ -75,7 +97,8 @@
         background: none;
         border: none;
         box-shadow: 0px 0px 2px navy;
-        color:black;
+        color:white;
+        font-weight: bold;
         outline: none;
         width: 100%;
     }
@@ -89,9 +112,10 @@
         width: 90%;
         margin: auto;
         background: none;
-        border: 1px solid black;
+        border: 1px solid green;
         text-transform: uppercase;
         font-weight: bold;
+        color: green;
     }
     .error li
     {
@@ -101,24 +125,25 @@
     }
     .result
     {
-        background-color: aqua;
         width: 90%;
         height: 100%;
         padding: 10px;
-        /* margin: auto; */
+        border-radius: .5rem;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid green;
+        color: green;
+    }
+    .form-content
+    {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        width: 100%;
     }
     .result ul
     {
         list-style: none;
-    }
-    @media (min-width:500px)
-    {
-        .form-conatiner,.result
-        {
-            width: 300px;
-        }
-    
-
     }
     @media (max-width:750px)
     {
@@ -129,7 +154,6 @@
     }
     }
 </style>
-
 <script src="./scripts/main.js"></script>
 </body>
 </html>

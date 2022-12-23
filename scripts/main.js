@@ -8,7 +8,7 @@ function SendPassword() {
 
   // Update the element's content or properties within the function
   let password = {"password": user_password};
-  axios.post("http://127.0.0.1:5002/password-checker", password)
+  axios.post("https://api.leonteqsecurity.com/password-checker", password)
     .then((res) => {
       let password_report = res.data.response;
       mylist.textContent = "";
