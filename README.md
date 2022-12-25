@@ -28,10 +28,10 @@ app.run(debug=True, port=5002)
 
 <pre>
 <code>
-# running on server
+<!-- # running on server -->
 axios.post("https://api.leonteqsecurity.com/password-checker", password)
 
-#running locally
+<!-- #running locally -->
 axios.post("http://127.0.0.1:5002/password-checker", password)
 </code>
 </pre>
