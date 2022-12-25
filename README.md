@@ -16,6 +16,8 @@ A strong password is an essential part of online security. It helps protect your
 
 [PasswordStrengthEvaluator](https://leontech254.github.io/PasswordStrengthEvaluator/)
 
+## To Note:
+
 ### flask sever running on:
 
 <pre>
